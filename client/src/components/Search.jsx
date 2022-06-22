@@ -1,4 +1,5 @@
 import React from "react";
+import "../App.css";
 
 function Search({ onSubmit }) {
   const handleSubmit = (event) => {
@@ -9,7 +10,7 @@ function Search({ onSubmit }) {
   return (
     <form onSubmit={handleSubmit}>
       <input name="filter" />
-      <button>Search</button>
+      <button >Search</button>
     </form>
   );
 }

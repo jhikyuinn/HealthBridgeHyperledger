@@ -119,430 +119,6 @@ nav {
   line-height: 40px;
 }
 
-.menu {
-  width: 16%;
-  height: 88vh;
-  background-color: rgb(134, 193, 217);
-  color: white;
-  font-family: 'gotham_thin', sans-serif;
-  padding-top: 10px;
-  text-align: center;
-  font-size: 18px
-}
-
-.name {
-  height: 60px;
-  line-height: 60px;
-  font-size: 16px;
-}
-
-.name h3 {
-  font-size: 20px;
-}
-
-.each {
-  height: 60px;
-  margin-top: 2em;
-}
-
-.each:hover {
-  color: rgb(134, 193, 217);
-  width: 100%;
-  background-color: white;
-  cursor: pointer;
-}
-
-.each:hover .icon_left {
-  color: #4f497c;
-  background-color: white;
-  cursor: pointer;
-}
-
-.icon {
-  color: white;
-  font-size: 20px;
-  float: right;
-  padding: 0.6em;
-  width: 100%;
-  height: 80px;
-  text-align: right;
-}
-
-.icon:hover {
-  color: white;
-  font-size: 20px;
-  float: right;
-  padding: 0.6em;
-  width: 100%;
-  height: 80px;
-  text-align: right;
-  cursor: pointer;
-}
-
-.icon_left {
-  color: white;
-  font-size: 24px;
-  float: right;
-  padding: 0.3em;
-  padding-top: 1em;
-}
-
-.icon_right {
-  color: white;
-  font-size: 24px;
-  float: right;
-  padding: 0.4em;
-}
-
-.icon_left1 {
-  color: white;
-  font-size: 24px;
-  text-align: center;
-  padding: 0.3em;
-  padding-top: 1em;
-}
-
-.icon_left2 {
-  font-size: 24px;
-  color: rgb(134, 193, 217);
-  padding-top: 0.8em;
-}
-
-.close {
-  display: none;
-}
-
-.cont {
-  text-align: center;
-  padding-top: 10%;
-}
-
-.started {
-  font-size: 30px;
-  color: #737373;
-}
-
-.select {
-  font-size: 19px;
-  font-family: 'gotham_thin', sans-serif;
-  letter-spacing: 1.5px;
-}
-
-.link {
-  color: rgb(134, 193, 217);
-}
-
-.navbar-right, .dropdown {
-  width: 100px;
-}
-
-.dropdown-toggle:hover {
-  background-color: transparent;
-}
-
-.room, .patient {
-  text-align: center;
-}
-
-.title {
-  font-size: 30px;
-  color: rgb(134, 193, 217);
-}
-
-.box {
-  width: 490px;
-  height: 220px;
-  border: 1px solid black;
-  border-radius: 10px;
-  margin-left: 3%;
-}
-
-.box1 {
-  width: 92%;
-  height: 140px;
-  border: 1px solid black;
-  border-radius: 10px;
-  margin-left: 3%;
-  padding-top: 2%;
-  margin-top: 3%;
-}
-
-.search {
-  width: 240px;
-  height: 35px;
-  border: 0;
-  margin-left: 2%;
-  border: 1px solid #737373;
-  border-radius: 10px;
-  font-size: 16px;
-  font-family: 'gotham_thin', sans-serif;
-  color: black;
-  margin-top: 3%;
-}
-
-.header {
-  font-size: 18px;
-  color: #000;
-  font-family: 'gotham_thin', sans-serif;
-}
-
-.head_val {
-  font-size: 15px;
-  color: #737373;
-  font-family: 'gotham_thin', sans-serif;
-}
-
-.dat {
-  text-align: left;
-  padding: 1em;
-  width: 98%;
-  display: block;
-}
-
-.box {
-  margin-top: 2%;
-}
-
-.arrow {
-  border-radius: 50%;
-  width: 50px;
-  height: 50px;
-  background-color: rgb(134, 193, 217);
-  color: white;
-  text-align: center;
-  padding: 1%;
-  float: right;
-  margin-top: -10%;
-}
-
-.arrow1 {
-  border-radius: 50%;
-  width: 50px;
-  height: 50px;
-  background-color: rgb(134, 193, 217);
-  color: white;
-  text-align: center;
-  padding-top: 0.5%;
-  padding-right: 0.3%;
-  float: right;
-}
-
-.top_nav {
-  background-color: white;
-  height: 80px;
-  width: 95%;
-}
-
-.pat_name {
-  color: #000;
-  text-align: left;
-}
-
-.arr {
-  font-size: 20px;
-  color: rgb(134, 193, 217);
-  text-align: center;
-}
-
-.icons {
-  color: rgb(134, 193, 217);
-  font-size: 30px;
-  float: right;
-  margin-top: 36%;
-  width: 100%;
-  height: 80px;
-  text-align: right;
-}
-
-.chat_area {
-  background-color: rgb(211,211,211,0.3);
-  height: 370px;
-  width: 95%;
-  overflow-y: scroll;
-  overflow-x: hidden;
-  border-radius: 5px;
-}
-
-.icon_left2 {
-  color: rgb(134, 193, 217);
-  font-size: 38px;
-  float: right;
-  margin-top: -22%;
-  margin-right: 20%;
-  text-align: left;
-}
-
-.icon_left_sq {
-  color: rgb(134, 193, 217);
-  font-size: 33px;
-  float: right;
-  text-align: left;
-  margin-top: 5.5%;
-}
-
-.icon_left_sq:hover {
-  color: rgb(134, 193, 217);
-  font-size: 33px;
-  float: right;
-  text-align: left;
-  margin-top: 5.5%;
-  cursor: pointer;
-}
-
-.icon_left_sq1 {
-  color: rgb(134, 193, 217);
-  font-size: 23px;
-  float: right;
-  text-align: left;
-  margin-right: 10%;
-  margin-top: 5%;
-  margin-top: 5.5%;
-}
-
-.icon_left_sq1:hover {
-  color: rgb(134, 193, 217);
-  font-size: 23px;
-  float: right;
-  text-align: left;
-  margin-right: 10%;
-  margin-top: 5%;
-  margin-top: 5.5%;
-  cursor: pointer;
-}
-
-.add_note {
-  padding-left: 2em;
-  font-family: 'gotham_thin', sans-serif;
-  color: black;
-  font-size: 16px;
-  height: 40px;
-  border: 0;
-  width: 100%;
-  background-color: rgb(211,211,211,0.3);
-  border-radius: 8px;
-}
-
-.add_note1 {
-  padding-left: 2em;
-  font-family: 'gotham_thin', sans-serif;
-  color: black;
-  font-size: 16px;
-  height: 40px;
-  border: 0;
-  width: 103%;
-  background-color: rgb(211,211,211,0.3);
-  border-radius: 8px;
-}
-
-.inp_area {
-  padding-right: 40%;
-  padding-top: 0.8em;
-  width: 100%;
-  background-color: white;
-  height: 80px;
-  bottom: 0;
-  position: fixed;
-  z-index: 100;
-}
-
-.inp_form {
-padding-right: 40%;
-padding-top: 0.8em;
-width: 100%;
-background-color: white;
-height: 60px;
-z-index: 100;
-margin-bottom: 15%;
-position: relative;
-display: run-in;
-text-align: left;
-}
-
-.note_add {
-width: 100px;
-height: 35px;
-border: 0;
-background-color: rgb(134, 193, 217);
-color: white;
-font-family: 'gotham_thin', sans-serif;
-border-radius: 8px;
-}
-
-.note_format {
-  width: 400px;
-  height: 195px;
-  background-color: white;
-  color: black;
-  font-size: 20px;
-  margin: 1em;
-  border-radius: 10px;
-  padding-left: 1.2em;
-}
-
-.note_format_d {
-  width: 400px;
-  height: 195px;
-  background-color: white;
-  color: black;
-  font-size: 20px;
-  margin: 1em;
-  border-radius: 10px;
-  padding-left: 1em;
-  border: 1px solid #4f497c;
-}
-
-.note_tit {
-  font-family: 'gotham_thin', sans-serif;
-  color: #000;
-  font-size: 16px;
-  text-align: left;
-}
-
-.note_dat {
-  font-family: 'gotham', sans-serif;
-  color: #000;
-  font-size: 16px;
-  text-align: left;
-  letter-spacing: 1px;
-}
-
-.date {
-  font-size: 20px;
-  font-family: 'gotham', sans-serif;
-  color: black;
-  position: absolute;
-  text-align: left;
-  padding: 0.3em;
-}
-
-.block {
-  padding: 0.4em;
-}
-
-.p_bar {
-  text-align: center;
-  width: 200px;
-  height: 15px;
-  margin-left: 18%;
-}
-.loginform{
- 
-  margin-top: 13%;
-  font-size:30px;
-}
-.form-check-label{
-
-font-size:12px;
-}
-.info{
-display: flex;
-flex:right;
-}
-.button-add{
-border:0;
-outline:0;
-background-color: white;
-}
 .structure{
 display:flex;
 flex-direction: row;
@@ -699,4 +275,83 @@ src: local('Titillium WebLight'), local('TitilliumWeb-Light'), url(http://themes
   width:30px;
   height:30px;
   margin-left: 74%;
+}
+
+
+/* Hospital Content */
+.hospital {
+  height: 100%;
+}
+
+.hospital_main {
+  background-color: white;
+  height: 100%;
+}
+
+.hospital_content {
+  display: flex;
+  flex-direction: row;
+  width: 50%;
+  height: 100%;
+}
+
+.hospital_content > .side_menu {
+  height: 100%;
+}
+
+.hospital_content > .right_content {
+  width: 100%;
+  overflow: auto;
+}
+
+
+.patient_list_container {
+  margin: 0% 2% 2% 2%;
+}
+
+.patient_list_container > .item_patient {
+  margin: 2% 2% 2% 2%;
+  background-color: #e2e6ea;
+  border: 1px;
+  border-color: black;
+  border-radius: 10px;
+  padding: 1.5% 1.5% 1.5% 1.5%;
+}
+
+.patient_list_container > .item_patient > .name {
+  font-size: 1.3rem;
+}
+
+.patient_list_container > .item_patient > .address {
+  margin-bottom: 1%;
+}
+.filter{
+  margin-top: 20px;
+}
+
+.my_view {
+  width: 60px;
+  height: 30px;
+  border-radius: 10px;
+  background-color: rgb(134, 193, 217);
+  display: inline-block;
+  text-decoration-line: none;
+  color: white;
+  font-size: 13px;
+  text-align: center;
+  margin-left: 1em;
+  line-height: 30px;
+}
+.my_view:hover {
+  width: 60px;
+  height: 30px;
+  border-radius: 10px;
+  background-color: rgb(134, 193, 217);
+  display: inline-block;
+  text-decoration-line: none;
+  color:rgb(80, 118, 133);
+  font-size: 13px;
+  text-align: center;
+  margin-left: 1em;
+  line-height: 30px;
 }
