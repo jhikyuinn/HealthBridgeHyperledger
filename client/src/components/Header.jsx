@@ -7,7 +7,7 @@ import '../App.css';
 function Header() {
   
   return (
-    <nav className="navba">
+    <nav style={{backgroundColor:"rgb(134, 193, 217)"}} className="navba">
       <div className="container-fluid">
          <div className="navbar-header">
             <a className="navbar-bran" href="/">HEALTH BRIDGE </a>

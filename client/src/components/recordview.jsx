@@ -1,197 +1,58 @@
 import { Form, Button } from "react-bootstrap";
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import { useLocation } from 'react-router-dom';
 import axios from 'axios';
-function HospitalSendPHR() {
-    const [formData, setFormData] = useState({
-        pid: "",
-        assigner: "",
-        name: "",
-        age: 0,
-        telecome: {
-            myPhone: "",
-        },
-        gender: "",
-        birthdate: "",
-        address: "",
-        contact: {
-            name: "",
-            phone: "",
-            relationship: "",
-            address: "",
-            gender: "",
-        },
-        symptom: "",
-        comment: "",
-        doctorName: "",
-    });
+import Header from "./Header";
+import "../App.css";
 
-    const getPHR = async () => {
-        axios.put(`${BASE_URL}/Patient/${formData.pid}`, {
-           "resourceType": "Patient",
-           "id": formData.pid,
-           "text": {
-               "status": "generated",
-               "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><table class=\"hapiPropertyTable\"><tbody/></table></div>"
-           },
-           "identifier": [
-               {
-                   "use": "usual",
-                   "assigner": {
-                       "display": formData.assigner,
-                   }
-               }
-           ],
-           "name": [
-               {
-                   "text": formData.name
-               }
-           ],
-           "age": formData.age,
-           "address" : [
-               {
-                   "use": "home",
-                   "text": formData.address
-               }
-           ],
-           "telecom": [
-               {
-                   "system": "phone",
-                   "value": formData.telecome.myPhone,
-                   "use": "mobile"
-               }
-           ],
-           "gender": formData.gender,
-           "contact": [
-               {
-                   "relationship":[
-                       {
-                           "text":formData.contact.relationship
-                       }
-                   ],
-                   "name": {
-                       "text": formData.contact.name
-                   },
-                   "gender": formData.contact.gender,
-                   "telecom": [
-                       {
-                           "system": "phone",
-                           "value": formData.contact.phone,
-                           "use": "mobile"
-                       }
-                   ],
-                   "address": [
-                       {
-                           "use":"home",
-                           "text": formData.contact.address
-                       }
-                   ]
-               }
-           ],
-           "extension" : [
-               {
-                   "url": "symptom",
-                   "valueString": formData.symptom
-               },
-               {
-                   "url": "comment",
-                   "valueString": formData.comment
-               },
-               {
-                   "url": "doctor",
-                   "valueString": formData.doctorName
-               },
-               {
-                   "url": "assigner",
-                   "valueString": formData.assigner
-               },
-               {
-                   "url": "age",
-                   "valueString": formData.age
-               }
-           ],
-           "generalPractitioner": {
-               "reference": `Practitioner/${formData.doctorName}`
-           },
-           "managingOrganization":{
-               "reference": `Organization/${formData.assigner}`
-           }
-        }).then((res) => {
-           console.log("from server: ", res);
-       })
-    }
+function Recordview() {
+    const location = useLocation();
+    const {recordview} =location.state;
+    
+    
 
-    const telChangeHandler = (e) => {
-        setFormData({
-            ...formData,
-            telecome: {
-                ...formData.telecome,
-                [e.target.name]: e.target.value,
-            }
-        })
-    }
-
-    const conChangeHandler = (e) => {
-        setFormData({
-            ...formData,
-            contact: {
-                ...formData.contact,
-                [e.target.name]: e.target.value,
-            }
-        })
-    }
-
-    const changeHandler = (e) => {
-        setFormData({
-            ...formData,
-            [e.target.name]: e.target.value,
-        })
-        
-    }
+    useEffect(() => {
+       console.log(recordview);
+    },[])
 
     return (
+        <div>
+        <Header></Header>
         <div className="hospital_send_phr">
+
             <Form>
                 <div className="phr_top">
                     <div className="phr_top_left">
                         <div className="col_1">
                             <Form.Group className="mb-3" controlId="pid">
                                 <Form.Label>PID</Form.Label>
-                                <Form.Control type="text" placeholder="Enter PID" name="pid" value={formData.pid}
-                                onChange={changeHandler}/>
+                                <Form.Control readOnly="readonly" type="text"  name="pid" value={recordview.id}/>
                             </Form.Group>
                         </div>
                         <div className="col_2">
                             <Form.Group className="mb-3" controlId="name">
                                 <Form.Label>Name</Form.Label>
-                                <Form.Control type="text" placeholder="Enter name" name="name" value={formData.name}
-                                onChange={changeHandler}/>
+                                <Form.Control readOnly="readonly" type="text"  name="name" value={recordview.name[0].text}/>
                             </Form.Group>
                             <Form.Group className="mb-3" controlId="age">
                                 <Form.Label>Age</Form.Label>
-                                <Form.Control type="number" placeholder="Enter age" name="age" value={formData.age}
-                                onChange={changeHandler}/>
+                                <Form.Control readOnly="readonly" type="text"  name="age" value={recordview.extension[4].valueString}/>
                             </Form.Group>
-                            <Form.Group controlId="formGridState">
+                            <Form.Group className="mb-3" controlId="gender">
                                 <Form.Label>Gender</Form.Label>
-                                <Form.Select name="gender" value={formData.gender}
-                                onChange={changeHandler}>
-                                    <option>male</option>
-                                    <option>female</option>
-                                </Form.Select>
+                                <Form.Control readOnly="readonly" type="text"  name="gender" value={recordview.gender}/>
                             </Form.Group>           
                         </div>
                         <div className="col_3">
                             <Form.Group className="mb-3" controlId="phone">
                                 <Form.Label>Mobile phone</Form.Label>
-                                <Form.Control type="text" placeholder="Enter your phone number" name="myPhone" value={formData.telecome.myPhone}
-                                onChange={telChangeHandler}/>
+                                <Form.Control readOnly="readonly" type="text" name="myPhone" value={recordview.telecom[0].value}/>
                             </Form.Group>
                         </div>
                         <div className="col_4">
                             <Form.Group className="mb-3" controlId="address">
                                 <Form.Label>Address</Form.Label>
-                                <Form.Control type="text" placeholder="Enter your home address" name="address" value={formData.address}
-                                onChange={changeHandler}/>
+                                <Form.Control readOnly="readonly" type="text" name="address" value={recordview.address[0].text}/>
                             </Form.Group>
                         </div>
                     </div>
@@ -199,35 +60,29 @@ function HospitalSendPHR() {
                         <div className="col_1">
                             <Form.Group className="mb-3" controlId="relationship">
                                 <Form.Label>Relationship</Form.Label>
-                                <Form.Control type="text" placeholder="Relationship with patient" 
-                                name="relationship" value={formData.contact.relationship}
-                                onChange={conChangeHandler}/>
+                                <Form.Control readOnly="readonly" type="text" name="relationship" value={recordview.contact[0].relationship[0].text}/>
                             </Form.Group>
                         </div>
                         <div className="col_2">
-                            <Form.Group className="mb-3" controlId="contact_name">
+                            <Form.Group className="mb-3" controlId="contact_name1">
                                 <Form.Label>Name</Form.Label>
-                                <Form.Control type="text" placeholder="Enter name" name="name" value={formData.contact.name} onChange={conChangeHandler}/>
+                                <Form.Control readOnly="readonly" type="text" name="name1"value={recordview.contact[0].name.text} />
                             </Form.Group>
-                            <Form.Group controlId="formGridState">
+                            <Form.Group className="mb-3" controlId="contact_gender">
                                 <Form.Label>Gender</Form.Label>
-                                <Form.Select name="gender" value={formData.contact.gender}
-                                onChange={conChangeHandler}>
-                                    <option>male</option>
-                                    <option>female</option>
-                                </Form.Select>
+                                <Form.Control readOnly="readonly" type="text" name="gender"/>
                             </Form.Group> 
                         </div>
                         <div className="col_3">
                             <Form.Group className="mb-3" controlId="contact_phone">
                                 <Form.Label>Mobile phone</Form.Label>
-                                <Form.Control type="text" placeholder="Enter contact phone number" name="phone" value={formData.contact.phone} onChange={conChangeHandler}/>
+                                <Form.Control readOnly="readonly" type="text" placeholder="Enter contact phone number" name="phone" value={recordview.contact[0].telecom[0].value}/>
                             </Form.Group>
                         </div>
                         <div className="col_4">
                             <Form.Group className="mb-3" controlId="contact_address">
                                 <Form.Label>Address</Form.Label>
-                                <Form.Control type="text" placeholder="Enter contact address" name="address" value={formData.contact.address} onChange={conChangeHandler}/>
+                                <Form.Control readOnly="readonly" type="text" placeholder="Enter contact address" name="address" value={recordview.contact[0].address.text}/>
                             </Form.Group>
                         </div>
                     </div>
@@ -236,34 +91,32 @@ function HospitalSendPHR() {
                     <div className="col_1">
                         <Form.Group className="mb-3" controlId="symptom">
                             <Form.Label>Symptom</Form.Label>
-                            <Form.Control type="text" placeholder="Enter contact address" name="symptom" value={formData.symptom}
-                            onChange={changeHandler}/>
+                            <Form.Control readOnly="readonly" type="text" placeholder="Enter contact address" name="symptom" value={recordview.extension[0].valueString} />
                         </Form.Group>
                     </div>
                     <div className="col_2">
                         <Form.Group className="mb-3" controlId="comment">
                             <Form.Label>Adding comment</Form.Label>
-                            <Form.Control as="textarea" rows={2} name="comment" value={formData.comment}
-                            onChange={changeHandler}/>
+                            <Form.Control readOnly="readonly" as="textarea" rows={2} name="comment" value={recordview.extension[1].valueString}/>
                         </Form.Group>
                     </div>
                     <div className="col_3">
                         <Form.Group className="mb-3" controlId="assginer">
                             <Form.Label>Assigner</Form.Label>
-                            <Form.Control type="text" placeholder="Enter assigner" name="assigner" value={formData.assigner}
-                            onChange={changeHandler}/>
+                            <Form.Control  readOnly="readonly" type="text" placeholder="Enter assigner" name="assigner" value={recordview.extension[3].valueString} />
                          </Form.Group>
                         <Form.Group className="mb-3" controlId="doctor">
                             <Form.Label>Doctor name</Form.Label>
-                            <Form.Control type="text" placeholder="Enter doctor name" name="doctorName" value={formData.doctorName}
-                            onChange={changeHandler}/>
+                            <Form.Control readOnly="readonly" type="text" placeholder="Enter doctor name" name="doctorName" value={recordview.extension[2].valueString}/>
                         </Form.Group>
-                        <Button className="btn_phr_send" variant="success" onClick={sendPHR}>Send</Button>
+                        <a className="my_btn" href="/patient" >close</a>
+                        
                     </div>
                 </div>
             </Form>
         </div>
+    </div>
     )
 }
 
-export default HospitalSendPHR;
+export default Recordview;

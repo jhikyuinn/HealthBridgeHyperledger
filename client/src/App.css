@@ -19,11 +19,11 @@
 
 #home {
   background-image: url('assets/home.jpeg');
-  background-position:500px 60px;
+  background-position:right 7vh;
   background-repeat: no-repeat;
-  background-size: contain;
+  background-size: 80% 90%;
   width: 100%;
-  height: 95vh;
+  height: 100%;
 }
 
 .user_header{
@@ -263,18 +263,16 @@ font-weight: 300;
 src: local('Titillium WebLight'), local('TitilliumWeb-Light'), url(http://themes.googleusercontent.com/static/fonts/titilliumweb/v2/anMUvcNT0H1YN4FII8wpr24bNCNEoFTpS2BTjF6FB5E.woff) format('woff');
 }
 .bellicon{
+  margin-left: 115vh;
   color:white;
-  display:row;
   width:30px;
   height:30px;
-  margin-left: 74%;
 }
 .bellicon:hover{
   color:rgb(80, 118, 133);
-  display:row;
   width:30px;
   height:30px;
-  margin-left: 74%;
+  margin-left: 115vh;
 }
 
 
@@ -355,3 +353,78 @@ src: local('Titillium WebLight'), local('TitilliumWeb-Light'), url(http://themes
   margin-left: 1em;
   line-height: 30px;
 }
+
+.hospital_send_phr {
+  display: flex;
+  flex-direction: column;
+  background-color: white;
+  margin: 2% 2% 2% 2%;
+  padding: 2% 2% 2% 2%;
+  border-radius: 2%;
+}
+
+.phr_top {
+  display: flex;
+  flex-direction: row;
+}
+
+.phr_top_left {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  width: 50%;
+  padding-right: 10px;
+}
+
+
+.phr_top_left > .col_2 {
+  display: flex;
+  flex-direction: row;
+}
+
+.phr_top_left > .col_2 > .mb-3 {
+  margin-right: 10px;
+}
+
+.phr_top_right {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  padding-left: 10px;
+  width: 49%;
+}
+
+.phr_top_right > .col_2 {
+  display: flex;
+  flex-direction: row;
+}
+
+.phr_top_right > .col_2 > .mb-3 {
+  margin-right: 10px;
+}
+
+.phr_bottom {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+}
+
+.phr_bottom > .col_1{
+  width: 48%;
+}
+
+.phr_bottom > .col_3 {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-end;
+}
+
+.phr_bottom > .col_3 > .mb-3 {
+  margin-right: 10px;
+}
+
+.phr_bottom > .col_3 > .btn_phr_send {
+  margin-left: auto;
+  width: 10%;
+}
+
