@@ -1,4 +1,4 @@
-
+import '../css/PatientPrediction.css';
 
 function Patientpredictions() {
 

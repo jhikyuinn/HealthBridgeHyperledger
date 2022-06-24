@@ -3,7 +3,8 @@ import { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import axios from 'axios';
 import Header from "./Header";
-import "../App.css";
+
+import "../css/PatientRecord.css"
 
 function Recordview() {
     const location = useLocation();
@@ -68,10 +69,6 @@ function Recordview() {
                                 <Form.Label>Name</Form.Label>
                                 <Form.Control readOnly="readonly" type="text" name="name1"value={recordview.contact[0].name.text} />
                             </Form.Group>
-                            <Form.Group className="mb-3" controlId="contact_gender">
-                                <Form.Label>Gender</Form.Label>
-                                <Form.Control readOnly="readonly" type="text" name="gender"/>
-                            </Form.Group> 
                         </div>
                         <div className="col_3">
                             <Form.Group className="mb-3" controlId="contact_phone">
@@ -109,7 +106,7 @@ function Recordview() {
                             <Form.Label>Doctor name</Form.Label>
                             <Form.Control readOnly="readonly" type="text" placeholder="Enter doctor name" name="doctorName" value={recordview.extension[2].valueString}/>
                         </Form.Group>
-                        <a className="my_btn" href="/patient" >close</a>
+                        <a className="my_btn" style={{marginLeft:"60%"}}href="/patient" >close</a>
                         
                     </div>
                 </div>

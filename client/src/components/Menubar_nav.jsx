@@ -2,6 +2,8 @@ import Patientrecords from './Patientrecords';
 import Patienttransactions from './Patienttransactions';
 import Patientpredictions from './Patientpredictions';
 
+import '../css/Menubar.css';
+
 function Menubar_nav({state}) {
     return (
         <div className="content">

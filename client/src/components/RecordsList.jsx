@@ -1,6 +1,7 @@
-import "../App.css"
 import { useNavigate } from 'react-router';
 import axios from 'axios';
+
+import "../css/PatientRecord.css"
 
 function RecordsList({record}) {
     const navigate=useNavigate();
@@ -25,7 +26,7 @@ function RecordsList({record}) {
                                 PID: {item.resource.id}
                             </div>
                             <div className='hospital'>
-                                Hospital: {item.resource.managingOrganization.reference[13]}{item.resource.managingOrganization.reference[14]}{item.resource.managingOrganization.reference[15]}{item.resource.managingOrganization.reference[16]}{item.resource.managingOrganization.reference[17]}{item.resource.managingOrganization.reference[18]}{item.resource.managingOrganization.reference[19]}{item.resource.managingOrganization.reference[20]}{item.resource.managingOrganization.reference[21]}{item.resource.managingOrganization.reference[22]}{item.resource.managingOrganization.reference[19]}{item.resource.managingOrganization.reference[23]}
+                                Hospital: {item.resource.managingOrganization.reference[13]}{item.resource.managingOrganization.reference[14]}{item.resource.managingOrganization.reference[15]}{item.resource.managingOrganization.reference[16]}{item.resource.managingOrganization.reference[17]}{item.resource.managingOrganization.reference[18]}{item.resource.managingOrganization.reference[19]}{item.resource.managingOrganization.reference[20]}{item.resource.managingOrganization.reference[21]}{item.resource.managingOrganization.reference[22]}{item.resource.managingOrganization.reference[23]}
                             </div>
                             <div className='doctor'>
                                 Doctor: {item.resource.extension[2].valueString}
@@ -33,7 +34,7 @@ function RecordsList({record}) {
                             <div className='symptom'>
                                 Symptom: {item.resource.extension[0].valueString}
                             </div>
-                           <a varient= "primary" onClick={() => getRecordsview()} style={{position: 'absolute', right: 1000}} className="my_view">View</a>
+                           <a onClick={() => getRecordsview()} style={{marginLeft:"85%"}} className="my_view">View</a>
                            <br></br>
                         </div>
                     )

@@ -1,3 +1,4 @@
+import '../css/Menubar.css';
 
 function MenuBar({setState}) {
 const menu = [
@@ -7,8 +8,6 @@ const menu = [
   { icon: "fa fa-solid fa-chart-line", name: "Predictions"}
   ]
   const onClickBtn = (event, key) => {
-    console.log(event);
-    console.log(key);
     setState(key);
 }
   return(
@@ -20,7 +19,7 @@ const menu = [
            
             return (
               <li key={index} onClick={e => onClickBtn(e, index)}>
-                <a href="#">
+                <a href="#!">
                   <i className={item.icon} ></i>
                   <span className='nav-text'>
                   {item.name}

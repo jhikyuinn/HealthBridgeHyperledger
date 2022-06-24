@@ -1,0 +1,177 @@
+/*Recordview.jsx*/
+
+.my_btn {
+  width: 160px;
+  height: 40px;
+  border-radius: 10px;
+  background-color: rgb(134, 193, 217);
+  display: inline-block;
+  text-decoration-line: none;
+  color: white;
+  font-size: 17px;
+  text-align: center;
+  margin-left: 1em;
+  line-height: 40px;
+}
+.my_btn:hover {
+  width: 160px;
+  height: 40px;
+  border-radius: 10px;
+  background-color: rgb(134, 193, 217);
+  display: inline-block;
+  text-decoration-line: none;
+  color:rgb(80, 118, 133);
+  font-size: 17px;
+  text-align: center;
+  margin-left: 1em;
+  line-height: 40px;
+}
+
+.phr_top {
+    display: flex;
+    flex-direction: row;
+  }
+  
+  .phr_top_left {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    width: 50%;
+    padding-right: 10px;
+  }
+  
+  
+  .phr_top_left > .col_2 {
+    display: flex;
+    flex-direction: row;
+  }
+  
+  .phr_top_left > .col_2 > .mb-3 {
+    margin-right: 10px;
+  }
+  
+  .phr_top_right {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    padding-left: 10px;
+    width: 49%;
+  }
+  
+  .phr_top_right > .col_2 {
+    display: flex;
+    flex-direction: row;
+  }
+  
+  .phr_top_right > .col_2 > .mb-3 {
+    margin-right: 10px;
+  }
+  
+  .phr_bottom {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+  }
+  
+  .phr_bottom > .col_1{
+    width: 48%;
+  }
+  
+  .phr_bottom > .col_3 {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-end;
+  }
+  
+  .phr_bottom > .col_3 > .mb-3 {
+    margin-right: 10px;
+  }
+  
+  .phr_bottom > .col_3 > .btn_phr_send {
+    margin-left: 20%;
+    width: 10%;
+  }
+  
+  /*RecordsList.jsx*/
+  .my_view {
+    width: 60px;
+    height: 30px;
+    border-radius: 10px;
+    background-color: rgb(134, 193, 217);
+    display: inline-block;
+    text-decoration-line: none;
+    color: white;
+    font-size: 13px;
+    text-align: center;
+    margin-left: 1em;
+    line-height: 30px;
+  }
+  .my_view:hover {
+    width: 60px;
+    height: 30px;
+    border-radius: 10px;
+    background-color: rgb(134, 193, 217);
+    display: inline-block;
+    text-decoration-line: none;
+    color:rgb(80, 118, 133);
+    font-size: 13px;
+    text-align: center;
+    margin-left: 1em;
+    line-height: 30px;
+  }
+
+.hospital {
+    height: 100%;
+  }
+  
+  .hospital_main {
+    background-color: white;
+    height: 100%;
+  }
+  
+  .hospital_content {
+    display: flex;
+    flex-direction: row;
+    width: 50%;
+    height: 100%;
+  }
+  
+  .hospital_content > .side_menu {
+    height: 100%;
+  }
+  
+  .hospital_content > .right_content {
+    width: 100%;
+    overflow: auto;
+  }
+  
+  
+  .patient_list_container {
+    margin: 0% 2% 2% 2%;
+  }
+  
+  .patient_list_container > .item_patient {
+    margin: 2% 2% 2% 2%;
+    background-color: #e2e6ea;
+    border: 1px;
+    border-color: black;
+    border-radius: 10px;
+    padding: 1.5% 1.5% 1.5% 1.5%;
+  }
+  
+  .patient_list_container > .item_patient > .name {
+    font-size: 1.3rem;
+  }
+  
+  .patient_list_container > .item_patient > .address {
+    margin-bottom: 1%;
+  }
+  .hospital_send_phr {
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    margin: 2% 2% 2% 2%;
+    padding: 2% 2% 2% 2%;
+    border-radius: 2%;
+  }
+  

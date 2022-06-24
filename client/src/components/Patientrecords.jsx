@@ -3,6 +3,8 @@ import { useEffect, useState } from 'react';
 import Search from "./Search"
 import RecordsList from "./RecordsList"
 
+import "../css/PatientRecord.css"
+
 function Patientrecords() {
 
   const [record, setRecord] = useState([]);

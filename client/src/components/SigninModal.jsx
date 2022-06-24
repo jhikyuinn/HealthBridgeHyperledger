@@ -1,11 +1,20 @@
 import React , { useState } from "react";
+import { useNavigate } from 'react-router';
 import { Modal, Form } from "react-bootstrap";
 import SignupModal from "./SignupModal";
 
 const SigninModal = ({ show, onHide }) => {
   const [signupModalOn, setSignupModalOn] = useState(false);
 
+  const [email,setEmail]=useState("");
+  const [password,setPassword]=useState("");
+  const navigate=useNavigate();
 
+  function  MenuLogin(){
+    navigate('/patient',{state:
+      {email:email},
+    });
+  }
   return (
     <>
     <SignupModal
@@ -26,16 +35,16 @@ const SigninModal = ({ show, onHide }) => {
           <Form>
             <Form.Group>
               <Form.Label>Email address</Form.Label>
-              <Form.Control type="email" placeholder="Enter email" />
+              <Form.Control type="email" placeholder="Enter email" value={email} onChange={(e) => {setEmail(e.target.value)}} />
             </Form.Group>
 
             <Form.Group>
               <Form.Label>Password</Form.Label>
-              <Form.Control type="password" placeholder="Password" />
+              <Form.Control type="password" placeholder="Password" value={password} onChange={(e) => {setPassword(e.target.value)}} />
             </Form.Group>
             <br></br>
 
-            <a href="/patient" className="my_btn">
+            <a onClick={() => MenuLogin()} className="my_btn">
               Login
             </a>
 

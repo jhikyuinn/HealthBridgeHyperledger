@@ -5,6 +5,7 @@ import Home from './components/Home';
 import Patient from "./components/Patient";
 import Recordview from "./components/Recordview";
 import './App.css';
+import InformationExchange from './components/InformationExchange';
 
 function App() {
 
@@ -16,6 +17,7 @@ function App() {
                 <Route path="/" exact element={<Home/>} />
                 <Route path="/patient" exact element={<Patient/>} />
                 <Route path="/record" exact element={<Recordview/>} />
+                <Route path="/information" exact element={<InformationExchange/>} />
               </Routes>
               </Router>
             </div>

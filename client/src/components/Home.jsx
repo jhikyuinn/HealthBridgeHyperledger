@@ -7,7 +7,7 @@ function Home() {
 
   return (
     <div>
-    <div className="App container-fluid" id="home">
+    <div className="App" id="home">
     <Header/>
       <Data />
     </div>
