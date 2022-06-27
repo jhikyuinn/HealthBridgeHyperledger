@@ -1,20 +1,17 @@
 import { useEffect, useState } from 'react';
-import RecordListLeft from './RecordListLeft';
-import RecordListRight from './RecordListRight';
-import "../css/PatientRecord.css"
-
-function RecordsList({record}) {
-
+import ItemPatientLeft from './ItemPatientLeft';
+import ItemPatientRight from './ItemPatientRight';
+function ItemPatient({patients}) {
     const [leftItem, setLeftItem] = useState([]);
     const [rightItem, setRightItem] = useState([]);
-    console.log(record);
+    console.log(patients);
     
     useEffect(() => {
             let leftTemp = [];
             let rightTemp = [];
-            console.log("in map: ", record);
-            if(record !== undefined) {
-                record.map((item, index) => {
+            console.log("in map: ", patients);
+            if(patients !== undefined) {
+                patients.map((item, index) => {
                     // (index%2 === 0 ? setLeftItem([...leftItem, item]) : setRightItem([...rightItem, item]));
                     if(index % 2 === 0) {
                         leftTemp.push(item);
@@ -25,12 +22,12 @@ function RecordsList({record}) {
             }
             setLeftItem(leftTemp);
             setRightItem(rightTemp);
-    }, [record])
+    }, [patients])
     return (
         <div className='patient_list_container'>
             <div className='patient_list_left'>
                 {leftItem && leftItem.map((item, index) => {
-                    return <RecordListLeft item={item} index={index} key={index} />
+                    return <ItemPatientLeft item={item} index={index} key={index} />
                 })}
             </div>
             {/* {leftItem.map((item) => {
@@ -38,13 +35,11 @@ function RecordsList({record}) {
             })} */}
             <div className='patient_list_right'>
                 {rightItem && rightItem.map((item, index) => {
-                    return <RecordListRight item={item} index={index} key={index} />
+                    return <ItemPatientRight item={item} index={index} key={index} />
                 })}
             </div>
         </div>
     )
 }
 
-export default RecordsList;
-
-   
+export default ItemPatient;

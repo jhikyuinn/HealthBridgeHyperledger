@@ -6,7 +6,7 @@ import '../css/Menubar.css';
 
 function Menubar_nav({state}) {
     return (
-        <div className="content">
+        <div >
             {state == 1 ? <Patienttransactions /> :
              state == 2 ? <Patientpredictions /> :
              <Patientrecords />}

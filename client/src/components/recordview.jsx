@@ -33,7 +33,7 @@ function Recordview() {
                         <div className="col_2">
                             <Form.Group className="mb-3" controlId="name">
                                 <Form.Label>Name</Form.Label>
-                                <Form.Control readOnly="readonly" type="text"  name="name" value={recordview.name[0].text}/>
+                                <Form.Control readOnly="readonly" type="text" name="name" value={recordview.name[0].text}/>
                             </Form.Group>
                             <Form.Group className="mb-3" controlId="age">
                                 <Form.Label>Age</Form.Label>
@@ -106,7 +106,7 @@ function Recordview() {
                             <Form.Label>Doctor name</Form.Label>
                             <Form.Control readOnly="readonly" type="text" placeholder="Enter doctor name" name="doctorName" value={recordview.extension[2].valueString}/>
                         </Form.Group>
-                        <a className="my_btn" style={{marginLeft:"60%"}}href="/patient" >close</a>
+                        <a className="my_btn" style={{marginLeft:"60%"}}href="/patient/${name}" >close</a>
                         
                     </div>
                 </div>

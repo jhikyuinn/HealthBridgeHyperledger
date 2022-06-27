@@ -5,16 +5,33 @@ import SignupModal from "./SignupModal";
 
 const SigninModal = ({ show, onHide }) => {
   const [signupModalOn, setSignupModalOn] = useState(false);
+  const navigate = useNavigate();
+  const [user, setUser] = useState({
+    email: "",
+    password: "",
 
-  const [email,setEmail]=useState("");
-  const [password,setPassword]=useState("");
-  const navigate=useNavigate();
+});
 
-  function  MenuLogin(){
-    navigate('/patient',{state:
-      {email:email},
-    });
+const onChangeHandler = (e) => {
+    setUser({
+        ...user,
+        [e.target.name]: e.target.value,
+    })
+}
+const onClickBtn = () => {
+    if(user.email ==="jhikyuinn") {
+    navigate(`/patient/${user.email}`, {id: user.email});
+}
+    else if(user.email === "James") {
+        navigate(`/doctor/${user.email}`, {id: user.email})
+    }
+    else if(user.email === "INLab") {
+      navigate(`/hospital/${user.email}`, {id: user.email});
   }
+    else if(user.email !== undefined) {
+      navigate(`/hospital/${user.email}`, {id: user.email});
+  }
+}
   return (
     <>
     <SignupModal
@@ -35,16 +52,16 @@ const SigninModal = ({ show, onHide }) => {
           <Form>
             <Form.Group>
               <Form.Label>Email address</Form.Label>
-              <Form.Control type="email" placeholder="Enter email" value={email} onChange={(e) => {setEmail(e.target.value)}} />
+              <Form.Control type="email" placeholder="Enter email" name="email" value={user.email} onChange={onChangeHandler} />
             </Form.Group>
 
             <Form.Group>
               <Form.Label>Password</Form.Label>
-              <Form.Control type="password" placeholder="Password" value={password} onChange={(e) => {setPassword(e.target.value)}} />
+              <Form.Control type="password" placeholder="Password" name="password" value={user.password} onChange={onChangeHandler} />
             </Form.Group>
             <br></br>
 
-            <a onClick={() => MenuLogin()} className="my_btn">
+            <a onClick={onClickBtn}className="my_btn">
               Login
             </a>
 

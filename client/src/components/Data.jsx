@@ -25,8 +25,8 @@ function Data() {
         <thead>
         <tr style={{ width: '700px' }}>
           <td><a href="#!" style={{marginLeft:"30px"}} onClick={() => setSigninModalOn(true)} className="my_btn">PHR owner</a></td>
-          <td><a href="/doctor" className="my_btn">PHR researcher</a></td>
-          <td><a href="/hospital" className="my_btn">PHR recorder</a></td>
+          <td><a href="#!" onClick={() => setSigninModalOn(true)} className="my_btn">PHR researcher</a></td>
+          <td><a href="#!" onClick={() => setSigninModalOn(true)} className="my_btn">PHR recorder</a></td>
         </tr>
         </thead>
       </table>
