@@ -1,8 +1,10 @@
 import axios from 'axios';
 import { useParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
+import Search from "../components/Search"
 
 import ItemPatient from './ItemPatient';
+import "../css/PatientRecord.css";
 function DoctorPList() {
     const {id} = useParams();
     const BASE_URL = "http://203.247.240.226:8080/fhir"
@@ -26,6 +28,8 @@ function DoctorPList() {
     }, [])
     return (
         <div className="doctor_pList">
+            <br></br>
+            <Search></Search>
             <ItemPatient patients={patientList} />
         </div>
     )

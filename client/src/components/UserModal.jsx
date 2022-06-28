@@ -9,18 +9,18 @@ const UserModal = (props) => {
   const { open } = props;
 
   return (
-    <div className={open ? 'openModal modal' : 'modal'}>
+    <div style={{textalign:"center"}}className={open ? 'openModal modal' : 'modal'}>
       {open ? (
-        <section className='Usermodal'>
+        <section style={{margin:"auto"}}>
           <br></br>
-        <a style={{fontSize:"20px"}}>Name:continue</a>
+        <a style={{fontSize:"20px"}}>Name:jhikyuinn</a>
         <br></br>
-        <a style={{fontSize:"20px"}}>Telecom:continue</a>
+        <a style={{fontSize:"20px"}}>Phone:010-9385-6525</a>
         <br></br>
         <br></br>
 
         <a className='coininfo'>
-        <FontAwesomeIcon className="dollaricon" icon={faSackDollar} /> :continue
+        <FontAwesomeIcon className="dollaricon" icon={faSackDollar} /> :100000 HBT
         </a>
         <br></br>
         

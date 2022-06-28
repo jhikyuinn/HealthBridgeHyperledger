@@ -2,6 +2,7 @@ import React , { useState } from "react";
 import { useNavigate } from 'react-router';
 import { Modal, Form } from "react-bootstrap";
 import SignupModal from "./SignupModal";
+import Header from "./Header";
 
 const SigninModal = ({ show, onHide }) => {
   const [signupModalOn, setSignupModalOn] = useState(false);
@@ -20,6 +21,7 @@ const onChangeHandler = (e) => {
 }
 const onClickBtn = () => {
     if(user.email ==="jhikyuinn") {
+    <Header email={user.email}></Header>
     navigate(`/patient/${user.email}`, {id: user.email});
 }
     else if(user.email === "James") {

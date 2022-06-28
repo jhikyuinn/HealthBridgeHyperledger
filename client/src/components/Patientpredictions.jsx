@@ -6,7 +6,7 @@ function Patientpredictions() {
     <div className="structure">
       <div className="UserDatalist"> user Data Choose</div>
       <div className="UserResult"> Data Machine Learning result</div>
-      </div>
+    </div>
       
 
       

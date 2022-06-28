@@ -1,17 +1,20 @@
-import React from "react";
+import React,{useState,useEffect} from "react";
 
 
-function Search({ onSubmit }) {
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    onSubmit(event.target.elements.filter.value);
-  };
+function Search() {
+  const [searchTerm, setSearchTerm] = useState("");
 
   return (
-    <form style={{textalign:"center"}} onSubmit={handleSubmit}>
-      <input name="filter" />
-      <button >Search</button>
-    </form>
+    <div className="App" style={{textAlign:"center"}}>
+    <input
+      type="texy"
+      placeholder="Search"
+      onChange={(e) => {
+        setSearchTerm(e.target.value);
+      }}
+    />
+    <a className="my_view">search</a>
+  </div>
   );
 }
 

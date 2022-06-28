@@ -18,7 +18,7 @@ function Patient() {
             <div className='hospital_main'>
                 <div className='hospital_content'>
                     <Menubar setState={setState}/>
-                    <div className='right_content' >
+                    <div style={{marginTop:"10px"}} className='right_content' >
                         <Menubar_nav state={state} />
                     </div>
                 </div>

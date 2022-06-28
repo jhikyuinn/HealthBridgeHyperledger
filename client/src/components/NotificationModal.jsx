@@ -18,8 +18,8 @@ const NotificationModal = (props) => {
     <div className={open ? 'openModal modal' : 'modal'}>
       {open ? (
         <section>
-          <main>hnn991206@naver.com asked for information.<button className="my_info" onClick={() => getInformation()}>details</button></main>
-          <main>wlrbdls99@naver.com asked for information.<button className="my_info" onClick={() => getInformation()}>details</button></main>
+          <main>James asked for information.<button className="my_info" onClick={() => getInformation()}>details</button></main>
+          <main>Alice asked for information.<button className="my_info" onClick={() => getInformation()}>details</button></main>
         </section>
       ) : null}
     </div>
