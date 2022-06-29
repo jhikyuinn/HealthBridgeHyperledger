@@ -16,9 +16,9 @@ function Data() {
     
     <div className="content">
       <h1 className="data" >Check your health<br/> on mobile</h1>
-      <h5 className="data_down" style={{marginTop:"70px"}}> Change your health  with doctor</h5>
-      <h5 className="data_down"> Change your health  with doctor</h5>
-      <h5 className="data_down"> Change your health  with doctor</h5>
+      <h5 className="data_down" style={{marginTop:"70px"}}> 100% full control over your health data</h5>
+      <h5 className="data_down"> Fast and Reliable Patient data</h5>
+      <h5 className="data_down"> Efficient way for storing PHR</h5>
       <h3 className="data_cont">Continue as</h3>
       <br></br>
       <table>
