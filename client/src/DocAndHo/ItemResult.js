@@ -20,7 +20,7 @@ function ItemResult({ item }) {
                 </div>
                 <a className='my_view' style={{marginLeft:"auto"}}>Request</a>
             </div>
-        </div>
+            </div>
     )
 }
 

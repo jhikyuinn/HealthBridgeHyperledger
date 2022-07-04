@@ -1,12 +1,25 @@
-import React  from 'react';
-
+import React,{ useEffect} from 'react';
+import axios from 'axios'
 import { faSackDollar } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 import "../css/HeaderModal.css"
 
 const UserModal = (props) => {
+
+  async function getUsers() { 
+    await axios.get(`http://203.247.240.226:22650/api/queryallEHRs`).then((res) => {
+      console.log(res);
+    });
+  }
+
   const { open } = props;
+
+  useEffect(() => {
+    console.log(2);
+    getUsers();
+    
+  },[])
 
   return (
     <div style={{textalign:"center"}}className={open ? 'openModal modal' : 'modal'}>
