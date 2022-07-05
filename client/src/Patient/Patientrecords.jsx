@@ -23,8 +23,8 @@ function Patientrecords() {
 
 useEffect(() => {
   getRecords();
-  console.log(record);
 },[])
+
   return(
     <div>
     <Search></Search>

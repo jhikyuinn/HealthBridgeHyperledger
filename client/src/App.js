@@ -1,12 +1,12 @@
-import React, { Component} from 'react';
+import React from 'react';
 import { BrowserRouter as Router } from "react-router-dom";
 import { Routes, Route } from "react-router-dom";
-import Home from './components/Home';
-import Patient from "./components/Patient";
-import Recordview from "./components/Recordview";
+import Home from './Patient/Home';
+import Patient from "./Patient/Patient";
+import Recordview from "./Patient/Recordview";
 import Hospital from './DocAndHo/Hospital';
 import Doctor from './DocAndHo/Doctor';
-import InformationExchange from './components/InformationExchange';
+import InformationExchange from './Patient/InformationExchange';
 
 import './App.css';
 

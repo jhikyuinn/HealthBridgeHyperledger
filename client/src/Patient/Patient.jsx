@@ -9,7 +9,6 @@ import "../css/PatientRecord.css"
 function Patient() {
     const location = useLocation();
     const email = location.state;
-    console.log(email);
     const [state, setState] = useState(0);
 
     return (

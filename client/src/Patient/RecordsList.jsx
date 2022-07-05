@@ -7,15 +7,12 @@ function RecordsList({record}) {
 
     const [leftItem, setLeftItem] = useState([]);
     const [rightItem, setRightItem] = useState([]);
-    console.log(record);
     
     useEffect(() => {
             let leftTemp = [];
             let rightTemp = [];
-            console.log("in map: ", record);
             if(record !== undefined) {
                 record.map((item, index) => {
-                    // (index%2 === 0 ? setLeftItem([...leftItem, item]) : setRightItem([...rightItem, item]));
                     if(index % 2 === 0) {
                         leftTemp.push(item);
                     } else {
@@ -33,9 +30,6 @@ function RecordsList({record}) {
                     return <RecordListLeft item={item} index={index} key={index} />
                 })}
             </div>
-            {/* {leftItem.map((item) => {
-                return (item.resource.id);
-            })} */}
             <div className='patient_list_right'>
                 {rightItem && rightItem.map((item, index) => {
                     return <RecordListRight item={item} index={index} key={index} />

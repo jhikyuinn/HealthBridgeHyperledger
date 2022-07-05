@@ -15,7 +15,6 @@ function RecordListLeft({ item, index }) {
 }
     return (
         <div className='item_patient_left' key={index}>
-            {console.log("itemPatientLeft: ", item)}
             <div className='id'>
                 PID: {item.resource.id}
             </div>

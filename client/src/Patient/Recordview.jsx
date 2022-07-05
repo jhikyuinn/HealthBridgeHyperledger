@@ -1,7 +1,5 @@
 import { Form, Button } from "react-bootstrap";
-import { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
-import axios from 'axios';
 import Header from "./Header";
 
 import "../css/PatientRecord.css"
@@ -9,12 +7,6 @@ import "../css/PatientRecord.css"
 function Recordview() {
     const location = useLocation();
     const {recordview} =location.state;
-    
-    
-
-    useEffect(() => {
-       console.log(recordview);
-    },[])
 
     return (
         <div>

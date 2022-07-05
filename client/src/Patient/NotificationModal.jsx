@@ -1,18 +1,21 @@
-import React  from 'react';
+import axios from 'axios';
+import React,{useState}  from 'react';
 import { useNavigate } from 'react-router';
 
 import "../css/HeaderModal.css"
 
 const NotificationModal = (props) => {
-    const navigate=useNavigate();
+  const navigate=new useNavigate();
   const { open } = props;
 
-  function getInformation(){
-    navigate('/information',
-        //{owner:owner},
-        //{researcher:researcher},
-        //{requesttime:requesttime},
-    )};
+  async function getInformation(){
+    await axios.get(`http://203.247.240.226:8080/fhir/Patient/HB1206`).then((res) => {
+      console.log(res.data);
+      navigate('/information',{state:
+        {exchangerecordview:res.data},
+      });
+    })
+  }
 
   return (
     <div className={open ? 'openModal modal' : 'modal'}>
