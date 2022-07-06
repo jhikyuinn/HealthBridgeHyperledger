@@ -9,6 +9,7 @@ import Doctor from './DocAndHo/Doctor';
 import InformationExchange from './Patient/InformationExchange';
 
 import './App.css';
+import Wearabledevice from './Wearabledevice/Wearabledevice';
 
 function App() {
 
@@ -23,6 +24,7 @@ function App() {
                 <Route path="/information" exact element={<InformationExchange/>} />
                 <Route path="/hospital/:id" element={<Hospital />} />
                 <Route path="/doctor/:id" element={<Doctor />} />
+                <Route path="/wearable/:id" element={<Wearabledevice />} />
               </Routes>
               </Router>
             </div>

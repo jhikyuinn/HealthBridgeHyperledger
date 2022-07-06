@@ -6,31 +6,29 @@ import crypto from 'crypto-js';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
-function HospitalSendPHR() {
+function WearableSend() {
     const BASE_URL = "http://203.247.240.226:8080/fhir"
     const BLOCK_CHAIN_URL = "http://203.247.240.226:22650/api"
     const [formData, setFormData] = useState({
         pid: "",
-        assigner: "",
-        name: "",
-        age: 0,
-        telecome: {
-            myPhone: "",
-        },
-        gender: "",
-        birthdate: "",
-        address: "",
-        contact: {
-            name: "",
-            phone: "",
-            relationship: "",
-            address: "",
-            gender: "",
-        },
-        symptom: "",
-        comment: "",
-        doctorName: "",
-        createdAt: ""
+            assigner: "",
+            currentheartrate:"",
+            activity: {
+                time:"",
+                heartrate:"",
+            },
+            exercise: {
+                time:"",
+                heartrate:"",
+                type:"",
+            },
+            sleep:{
+                time:"",
+            },
+            totalsteps:"",
+            totaldistances:"",
+            totalstairs:"",
+            createdAt: ""
     });
 
     const toastId  = useRef();
@@ -146,13 +144,9 @@ function HospitalSendPHR() {
                 "id": formData.pid,
 
                 "extension": [
-
                     {
-
                         "url": "doctor",
-
                         "valueString": formData.doctorName
-
                     },
                     {
                         "url": "assigner",
@@ -160,91 +154,46 @@ function HospitalSendPHR() {
                     },
                     {
                         "url": "createdAt",
-
                         "valueString": formData.createdAt
-
                     }
-
                 ],
-
                 "clinicalStatus": {
-
                     "coding": [
-
                     {
-
                         "system": "http://terminology.hl7.org/CodeSystem/condition-clinical",
-
                         "code": "active"
-
                     }
-
                  ]
-
                 },
-
                 "verificationStatus": {
-
                     "coding": [
-
                     {
-
                         "system": "http://terminology.hl7.org/CodeSystem/condition-ver-status",
-
                         "code": "confirmed"
-
                     }
-
                  ]
-
                 },
-
                 "category": [
-
                     {
-
                     "coding": [
-
                         {
-
                             "system": "http://terminology.hl7.org/CodeSystem/condition-category",
-
                             "code": "encounter-diagnosis",
-
                             "display": "Encounter Diagnosis"
-
                         }
-
                      ]
-
                     }
-
                 ],
-
                 "code": {
-
                     "text": formData.symptom
-
                 },
-
                 "subject": {
-
                     "reference": `Patient/${formData.pid}`
-
                 }
-
-    
-
             }).then((res) => {
-
                 console.log(res);
-
             })
-
         }
-
-        
-
     }
 
     const phrHash = (pid) => {
@@ -304,24 +253,22 @@ function HospitalSendPHR() {
         setFormData({
             pid: "",
             assigner: "",
-            name: "",
-            age: 0,
-            telecome: {
-                myPhone: "",
+            currentheartrate:"",
+            activity: {
+                time:"",
+                heartrate:"",
             },
-            gender: "",
-            birthdate: "",
-            address: "",
-            contact: {
-                name: "",
-                phone: "",
-                relationship: "",
-                address: "",
-                gender: "",
+            exercise:{
+                time:"",
+                heartrate:"",
+                type:"",
             },
-            symptom: "",
-            comment: "",
-            doctorName: "",
+            sleep:{
+                time:"",
+            },
+            totalsteps:"",
+            totaldistances:"",
+            totalstairs:"",
             createdAt: ""
         })
     }
@@ -342,117 +289,61 @@ function HospitalSendPHR() {
             <Form>
                 <div className="phr_top">
                     <div className="phr_top_left">
-                        <div className="col_1">
+                        <div className="col_2">
                             <Form.Group className="mb-3" controlId="pid">
                                 <Form.Label>PID</Form.Label>
                                 <Form.Control type="text" placeholder="Enter PID" name="pid" value={formData.pid}
                                 onChange={changeHandler}/>
                             </Form.Group>
-                        </div>
-                        <div className="col_2">
-                            <Form.Group className="mb-3" controlId="name">
-                                <Form.Label>Name</Form.Label>
-                                <Form.Control type="text" placeholder="Enter name" name="name" value={formData.name}
-                                onChange={changeHandler}/>
-                            </Form.Group>
-                            <Form.Group className="mb-3" controlId="age">
-                                <Form.Label>Age</Form.Label>
-                                <Form.Control type="number" placeholder="Enter age" name="age" value={formData.age}
-                                onChange={changeHandler}/>
-                            </Form.Group>
-                            <Form.Group controlId="formGridState">
-                                <Form.Label>Gender</Form.Label>
-                                <Form.Select name="gender" value={formData.gender}
-                                onChange={changeHandler}>
-                                    <option>male</option>
-                                    <option>female</option>
-                                </Form.Select>
-                            </Form.Group>          
-                        </div>
-                        <div className="col_3">
-                            <Form.Group className="mb-3" controlId="phone">
-                                <Form.Label>Mobile phone</Form.Label>
-                                <Form.Control type="text" placeholder="Enter your phone number" name="myPhone" value={formData.telecome.myPhone}
-                                onChange={telChangeHandler}/>
-                            </Form.Group>
-                        </div>
-                        <div className="col_4">
-                            <Form.Group className="mb-3" controlId="address">
-                                <Form.Label>Address</Form.Label>
-                                <Form.Control type="text" placeholder="Enter your home address" name="address" value={formData.address}
+                            <Form.Group className="mb-3" controlId="currentheartrate">
+                                <Form.Label>Current heart rate</Form.Label>
+                                <Form.Control type="text" placeholder="Enter heart rate" name="currentheartrate" value={formData.currentheartrate}
                                 onChange={changeHandler}/>
                             </Form.Group>
                         </div>
                     </div>
+                        
                     <div className="phr_top_right">
-                        <div className="col_1">
-                            <Form.Group className="mb-3" controlId="relationship">
-                                <Form.Label>Relationship</Form.Label>
-                                <Form.Control type="text" placeholder="Relationship with patient"
-                                name="relationship" value={formData.contact.relationship}
-                                onChange={conChangeHandler}/>
+                        <div className="col_2">
+                            <Form.Group className="mb-3" controlId="activitytime">
+                                <Form.Label>Total activity time</Form.Label>
+                                <Form.Control type="text" placeholder="" name="activitytime" value={formData.activity.time}
+                                onChange={changeHandler}/>
                             </Form.Group>
+                            <Form.Group className="mb-3" controlId="activityheart">
+                                <Form.Label>The average heart rate of activity</Form.Label>
+                                <Form.Control type="number" placeholder="" name="activityheart" value={formData.activity.heartrate}
+                                onChange={changeHandler}/>
+                            </Form.Group> 
                         </div>
                         <div className="col_2">
-                            <Form.Group className="mb-3" controlId="contact_name">
-                                <Form.Label>Name</Form.Label>
-                                <Form.Control type="text" placeholder="Enter name" name="name" value={formData.contact.name} onChange={conChangeHandler}/>
+                            <Form.Group className="mb-3" controlId="excercisetime">
+                                <Form.Label>Total exercise time</Form.Label>
+                                <Form.Control type="text" placeholder="" name="excercisetime" value={formData.exercise.time}
+                                onChange={changeHandler}/>
                             </Form.Group>
-                            <Form.Group controlId="formGridState">
-                                <Form.Label>Gender</Form.Label>
-                                <Form.Select name="gender" value={formData.contact.gender}
-                                onChange={conChangeHandler}>
-                                    <option>male</option>
-                                    <option>female</option>
-                                </Form.Select>
-                            </Form.Group>
+                            <Form.Group className="mb-3" controlId="excerciseheart">
+                                <Form.Label>The average heart rate of exercise</Form.Label>
+                                <Form.Control type="text" placeholder="" name="excerciseheart" value={formData.exercise.heartrate}
+                                onChange={changeHandler}/>
+                            </Form.Group> 
                         </div>
-                        <div className="col_3">
-                            <Form.Group className="mb-3" controlId="contact_phone">
-                                <Form.Label>Mobile phone</Form.Label>
-                                <Form.Control type="text" placeholder="Enter contact phone number" name="phone" value={formData.contact.phone} onChange={conChangeHandler}/>
-                            </Form.Group>
-                        </div>
-                        <div className="col_4">
-                            <Form.Group className="mb-3" controlId="contact_address">
-                                <Form.Label>Address</Form.Label>
-                                <Form.Control type="text" placeholder="Enter contact address" name="address" value={formData.contact.address} onChange={conChangeHandler}/>
-                            </Form.Group>
+                        <div className="col_1">
+                            <Form.Group className="mb-3" controlId="excercisetype">
+                                <Form.Label>Types of Exercise</Form.Label>
+                                <Form.Control type="text" placeholder="" name="excercisetype" value={formData.exercise.type}
+                                onChange={changeHandler}/>
+                            </Form.Group> 
                         </div>
                     </div>
                 </div>
-                <div className="phr_bottom">
-                    <div className="col_1">
-                        <Form.Group className="mb-3" controlId="symptom">
-                            <Form.Label>Symptom</Form.Label>
-                            <Form.Control type="text" placeholder="Enter contact address" name="symptom" value={formData.symptom}
-                            onChange={changeHandler}/>
-                        </Form.Group>
+                        
+                    <div className="phr_bottom">
+                        <a style={{margin:"auto"}}className="my_btn" variant="success" onClick={onClickSendHandler}>Send</a>
                     </div>
-                    <div className="col_2">
-                        <Form.Group className="mb-3" controlId="comment">
-                            <Form.Label>Adding comment</Form.Label>
-                            <Form.Control as="textarea" rows={2} name="comment" value={formData.comment}
-                            onChange={changeHandler}/>
-                        </Form.Group>
-                    </div>
-                    <div className="col_3">
-                        <Form.Group className="mb-3" controlId="assginer">
-                            <Form.Label>Assigner</Form.Label>
-                            <Form.Control type="text" placeholder="Enter assigner" name="assigner" value={formData.assigner}
-                            onChange={changeHandler}/>
-                         </Form.Group>
-                        <Form.Group className="mb-3" controlId="doctor">
-                            <Form.Label>Doctor name</Form.Label>
-                            <Form.Control type="text" placeholder="Enter doctor name" name="doctorName" value={formData.doctorName}
-                            onChange={changeHandler}/>
-                        </Form.Group>
-                        <a style={{margin:"auto"}} className="my_btn" variant="success" onClick={onClickSendHandler}>Send</a>
-                    </div>
-                </div>
             </Form>
         </div>
     )
 }
 
-export default HospitalSendPHR;
+export default WearableSend;

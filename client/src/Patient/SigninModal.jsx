@@ -2,36 +2,39 @@ import React , { useState } from "react";
 import { useNavigate } from 'react-router';
 import { Modal, Form } from "react-bootstrap";
 import SignupModal from "./SignupModal";
-import Header from "./Header";
+import axios from 'axios';
+
 
 const SigninModal = ({ show, onHide }) => {
   const [signupModalOn, setSignupModalOn] = useState(false);
   const navigate = useNavigate();
-  const [user, setUser] = useState({
+  const [userlogin, setUserlogin] = useState({
     email: "",
     password: "",
 
 });
 
 const onChangeHandler = (e) => {
-    setUser({
-        ...user,
+    setUserlogin({
+        ...userlogin,
         [e.target.name]: e.target.value,
     })
 }
-const onClickBtn = () => {
-    if(user.email ==="jhikyuinn") {
-    <Header email={user.email}></Header>
-    navigate(`/patient/${user.email}`, {id: user.email});
-}
-    else if(user.email === "James") {
-        navigate(`/doctor/${user.email}`, {id: user.email})
+const onClickBtn = async() => {
+    if(userlogin.email ==="jhikyuinn") {
+      navigate(`/patient/${userlogin.email}`, {id: "jhikyuinn"});
     }
-    else if(user.email === "INLab") {
-      navigate(`/hospital/${user.email}`, {id: user.email});
+    else if(userlogin.email === "James") {
+      navigate(`/doctor/${userlogin.email}`, {id: "James"})
+    }
+    else if(userlogin.email === "INLab") {
+      navigate(`/hospital/${userlogin.email}`, {id: "INLab"});
   }
-    else if(user.email !== undefined) {
-      navigate(`/hospital/${user.email}`, {id: user.email});
+  else if(userlogin.email === "applewatch") {
+    navigate(`/wearable/${userlogin.email}`, {id: "applewatch"});
+}
+    else if(userlogin.email !== undefined) {
+      navigate(`/patient/${userlogin.email}`, {id: userlogin.email});
   }
 }
   return (
@@ -54,12 +57,12 @@ const onClickBtn = () => {
           <Form>
             <Form.Group>
               <Form.Label>Email address</Form.Label>
-              <Form.Control type="email" placeholder="Enter email" name="email" value={user.email} onChange={onChangeHandler} />
+              <Form.Control type="email" placeholder="Enter email" name="email" value={userlogin.email} onChange={onChangeHandler} />
             </Form.Group>
 
             <Form.Group>
               <Form.Label>Password</Form.Label>
-              <Form.Control type="password" placeholder="Password" name="password" value={user.password} onChange={onChangeHandler} />
+              <Form.Control type="password" placeholder="Password" name="password" value={userlogin.password} onChange={onChangeHandler} />
             </Form.Group>
             <br></br>
 

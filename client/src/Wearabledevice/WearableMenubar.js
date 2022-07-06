@@ -1,11 +1,10 @@
 import '../css/Menubar.css';
-
-function MenuBar({setState}) {
+function WearableMenuBar({setState}) {
 const menu = [
 
-  { icon: "fa fa-solid fa-file-medical", name: "My Records"},
-  { icon: "fa fa-solid fa-address-card", name: "My transactions"},
-  { icon: "fa fa-solid fa-chart-bar", name: "Predictions"},
+  { icon: "fa fa-solid fa-file-waveform", name: "Wearable device Records"},
+  { icon: "fa fa-solid fa-file-import", name: "Wearable device Send"},
+  { icon: "fa fa-solid fa-gear", name: "Settings"}
   ]
   const onClickBtn = (event, key) => {
     setState(key);
@@ -36,4 +35,4 @@ const menu = [
 }
 
 
-export default MenuBar;
+export default WearableMenuBar;

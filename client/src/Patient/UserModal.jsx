@@ -1,34 +1,19 @@
 import React,{ useState, useEffect} from 'react';
-import axios from 'axios'
-import { faSackDollar } from "@fortawesome/free-solid-svg-icons";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 import "../css/HeaderModal.css"
 
 const UserModal = (props) => {
-
-  const [users, setUsers] = useState([]);
-
-  async function getUsers() { 
-    let temp = [];
-    await axios.get(`http://203.247.240.226:22650/api/query/EHR1206`).then((res) => {
-      console.log(res);
-      temp.push(res.data);
-      setUsers(temp);
-    });
-  }
+  console.log(props);
 
   const { open } = props;
+  const { users } = props;
+  console.log(users);
 
-  useEffect(() => {
-    getUsers();
-    
-  },[])
 
   return (
     <div className={open ? 'openbackground' : 'background' }>
-    
     <div style={{textalign:"center"}}className={open ? 'openModal modal' : 'modal'}>
+
       {open ? (
         <section style={{margin:"auto"}}>
         <br></br>
