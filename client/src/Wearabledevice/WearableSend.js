@@ -1,3 +1,5 @@
+
+
 import { Form, Button } from "react-bootstrap";
 import { useState, useRef } from 'react';
 import axios from 'axios';
@@ -10,14 +12,22 @@ function WearableSend() {
     const BASE_URL = "http://203.247.240.226:8080/fhir"
     const BLOCK_CHAIN_URL = "http://203.247.240.226:22650/api"
     const [formData, setFormData] = useState({
-        pid: "",
+            pid: "",
             assigner: "",
+            name: "",
+            age: 0,
+            telecome: {
+                myPhone: "",
+            },
+            gender: "",
+            birthdate: "",
+            address: "",
             currentheartrate:"",
             activity: {
                 time:"",
                 heartrate:"",
             },
-            exercise: {
+            exercise:{
                 time:"",
                 heartrate:"",
                 type:"",
@@ -25,9 +35,6 @@ function WearableSend() {
             sleep:{
                 time:"",
             },
-            totalsteps:"",
-            totaldistances:"",
-            totalstairs:"",
             createdAt: ""
     });
 
@@ -68,132 +75,39 @@ function WearableSend() {
                }
            ],
            "gender": formData.gender,
-           "contact": [
-               {
-                   "relationship":[
-                       {
-                           "text":formData.contact.relationship
-                       }
-                   ],
-                   "name": {
-                       "text": formData.contact.name
-                   },
-                   "gender": formData.contact.gender,
-                   "telecom": [
-                       {
-                           "system": "phone",
-                           "value": formData.contact.phone,
-                           "use": "mobile"
-                       }
-                   ],
-                   "address": [
-                       {
-                           "use":"home",
-                           "text": formData.contact.address
-                       }
-                   ]
-               }
-           ],
            "extension" : [
                {
-                   "url": "symptom",
-                   "valueString": formData.symptom
+                   "url": " currentheartrate",
+                   "valueString": formData.currentheartrate
                },
                {
-                   "url": "comment",
-                   "valueString": formData.comment
+                   "url": "activitytime",
+                   "valueString": formData.activity.time
                },
                {
-                   "url": "doctor",
-                   "valueString": formData.doctorName
+                   "url": "activityheart",
+                   "valueString": formData.activity.heartrate
                },
                {
-                   "url": "assigner",
-                   "valueString": formData.assigner
+                   "url": "exercisetime",
+                   "valueString": formData.exercise.time
                },
                {
-                   "url": "age",
-                   "valueString": formData.age
+                   "url": "exercisetype",
+                   "valueString": formData.exercise.type
                },
                {
                    "url": "createdAt",
                    "valueString": formData.createdAt
                }
            ],
-           "generalPractitioner": {
-               "reference": `Practitioner/${formData.doctorName}`
-           },
            "managingOrganization":{
                "reference": `Organization/${formData.assigner}`
            }
         }).then((res) => {
            console.log("from server: ", res);
-           postCondition(res);
+
        })
-    }
-
-
-    const postCondition = async (prevResult) => {
-
-        if(prevResult !== undefined) {
-
-            await axios.put(`${BASE_URL}/Condition/${formData.pid}`, {
-
-                "resourceType": "Condition",
-
-                "id": formData.pid,
-
-                "extension": [
-                    {
-                        "url": "doctor",
-                        "valueString": formData.doctorName
-                    },
-                    {
-                        "url": "assigner",
-                        "valueString": formData.assigner
-                    },
-                    {
-                        "url": "createdAt",
-                        "valueString": formData.createdAt
-                    }
-                ],
-                "clinicalStatus": {
-                    "coding": [
-                    {
-                        "system": "http://terminology.hl7.org/CodeSystem/condition-clinical",
-                        "code": "active"
-                    }
-                 ]
-                },
-                "verificationStatus": {
-                    "coding": [
-                    {
-                        "system": "http://terminology.hl7.org/CodeSystem/condition-ver-status",
-                        "code": "confirmed"
-                    }
-                 ]
-                },
-                "category": [
-                    {
-                    "coding": [
-                        {
-                            "system": "http://terminology.hl7.org/CodeSystem/condition-category",
-                            "code": "encounter-diagnosis",
-                            "display": "Encounter Diagnosis"
-                        }
-                     ]
-                    }
-                ],
-                "code": {
-                    "text": formData.symptom
-                },
-                "subject": {
-                    "reference": `Patient/${formData.pid}`
-                }
-            }).then((res) => {
-                console.log(res);
-            })
-        }
     }
 
     const phrHash = (pid) => {
@@ -229,16 +143,6 @@ function WearableSend() {
         })
     }
 
-    const conChangeHandler = (e) => {
-        setFormData({
-            ...formData,
-            contact: {
-                ...formData.contact,
-                [e.target.name]: e.target.value,
-            }
-        })
-    }
-
     const changeHandler = (e) => {
         const date = new Date().toLocaleString();
         setFormData({
@@ -249,10 +153,38 @@ function WearableSend() {
         console.log(formData);
     }
 
+    const actchangeHandler = (e) => {
+        setFormData({
+            ...formData,
+            activity: {
+                ...formData.activity,
+                [e.target.name]: e.target.value,
+            }
+        })
+    }
+
+    const exechangeHandler = (e) => {
+        setFormData({
+            ...formData,
+            exercise: {
+                ...formData.exercise,
+                [e.target.name]: e.target.value,
+            }
+        })
+    }
+
     const resetForm = () => {
         setFormData({
             pid: "",
             assigner: "",
+            name: "",
+            age: 0,
+            telecome: {
+                myPhone: "",
+            },
+            gender: "",
+            birthdate: "",
+            address: "",
             currentheartrate:"",
             activity: {
                 time:"",
@@ -266,9 +198,6 @@ function WearableSend() {
             sleep:{
                 time:"",
             },
-            totalsteps:"",
-            totaldistances:"",
-            totalstairs:"",
             createdAt: ""
         })
     }
@@ -289,10 +218,53 @@ function WearableSend() {
             <Form>
                 <div className="phr_top">
                     <div className="phr_top_left">
-                        <div className="col_2">
+                        <div className="col_1">
                             <Form.Group className="mb-3" controlId="pid">
                                 <Form.Label>PID</Form.Label>
                                 <Form.Control type="text" placeholder="Enter PID" name="pid" value={formData.pid}
+                                onChange={changeHandler}/>
+                            </Form.Group>
+                        </div>
+                        <div className="col_2">
+                            <Form.Group className="mb-3" controlId="name">
+                                <Form.Label>Name</Form.Label>
+                                <Form.Control type="text" placeholder="Enter name" name="name" value={formData.name}
+                                onChange={changeHandler}/>
+                            </Form.Group>
+                            <Form.Group className="mb-3" controlId="age">
+                                <Form.Label>Age</Form.Label>
+                                <Form.Control type="number" placeholder="Enter age" name="age" value={formData.age}
+                                onChange={changeHandler}/>
+                            </Form.Group>
+                            <Form.Group controlId="formGridState">
+                                <Form.Label>Gender</Form.Label>
+                                <Form.Select name="gender" value={formData.gender}
+                                onChange={changeHandler}>
+                                    <option>male</option>
+                                    <option>female</option>
+                                </Form.Select>
+                            </Form.Group>          
+                        </div>
+                        <div className="col_3">
+                            <Form.Group className="mb-3" controlId="phone">
+                                <Form.Label>Mobile phone</Form.Label>
+                                <Form.Control type="text" placeholder="Enter your phone number" name="myPhone" value={formData.telecome.myPhone}
+                                onChange={telChangeHandler}/>
+                            </Form.Group>
+                        </div>
+                        <div className="col_4">
+                            <Form.Group className="mb-3" controlId="address">
+                                <Form.Label>Address</Form.Label>
+                                <Form.Control type="text" placeholder="Enter your home address" name="address" value={formData.address}
+                                onChange={changeHandler}/>
+                            </Form.Group>
+                        </div>
+                    </div>
+                    <div className="phr_top_right">
+                        <div className="col_2">
+                            <Form.Group className="mb-3" controlId="sleep">
+                                <Form.Label>Sleep time</Form.Label>
+                                <Form.Control type="text" placeholder="Enter Sleep time" name="sleep" value={formData.sleep.time}
                                 onChange={changeHandler}/>
                             </Form.Group>
                             <Form.Group className="mb-3" controlId="currentheartrate">
@@ -301,49 +273,58 @@ function WearableSend() {
                                 onChange={changeHandler}/>
                             </Form.Group>
                         </div>
-                    </div>
-                        
-                    <div className="phr_top_right">
                         <div className="col_2">
-                            <Form.Group className="mb-3" controlId="activitytime">
+                        <Form.Group className="mb-3" controlId="activitytime">
                                 <Form.Label>Total activity time</Form.Label>
-                                <Form.Control type="text" placeholder="" name="activitytime" value={formData.activity.time}
-                                onChange={changeHandler}/>
+                                <Form.Control type="text" placeholder="" name="activitytime" defaultValue={formData.activity.time}
+                                onChange={actchangeHandler}/> 
                             </Form.Group>
                             <Form.Group className="mb-3" controlId="activityheart">
                                 <Form.Label>The average heart rate of activity</Form.Label>
-                                <Form.Control type="number" placeholder="" name="activityheart" value={formData.activity.heartrate}
-                                onChange={changeHandler}/>
+                                <Form.Control type="text" placeholder="" name="activityheart" defaultValue={formData.activity.heartrate}
+                                onChange={actchangeHandler}/>
                             </Form.Group> 
                         </div>
+                        
                         <div className="col_2">
-                            <Form.Group className="mb-3" controlId="excercisetime">
+                            <Form.Group className="mb-3" controlId="exercisetime">
                                 <Form.Label>Total exercise time</Form.Label>
-                                <Form.Control type="text" placeholder="" name="excercisetime" value={formData.exercise.time}
-                                onChange={changeHandler}/>
+                                <Form.Control type="text" placeholder="" name="exercisetime" defaultValue={formData.exercise.time}
+                                onChange={exechangeHandler}/>
                             </Form.Group>
-                            <Form.Group className="mb-3" controlId="excerciseheart">
+                            <Form.Group className="mb-3" controlId="exerciseheart">
                                 <Form.Label>The average heart rate of exercise</Form.Label>
-                                <Form.Control type="text" placeholder="" name="excerciseheart" value={formData.exercise.heartrate}
-                                onChange={changeHandler}/>
+                                <Form.Control type="text" placeholder="" name="exerciseheart" defaultValue={formData.exercise.heartrate}
+                                onChange={exechangeHandler}/>
                             </Form.Group> 
                         </div>
                         <div className="col_1">
                             <Form.Group className="mb-3" controlId="excercisetype">
                                 <Form.Label>Types of Exercise</Form.Label>
-                                <Form.Control type="text" placeholder="" name="excercisetype" value={formData.exercise.type}
-                                onChange={changeHandler}/>
+                                <Form.Control type="text" placeholder="" name="excercisetype" defaultValue={formData.exercise.type}
+                                onChange={exechangeHandler}/>
                             </Form.Group> 
                         </div>
+                    
+                        
                     </div>
                 </div>
+                <div className="phr_bottom">
+                    
+                    <div className="col_3">
+                        <Form.Group className="mb-3" controlId="assginer">
+                            <Form.Label>Assigner</Form.Label>
+                            <Form.Control type="text" placeholder="Enter assigner" name="assigner" value={formData.assigner}
+                            onChange={changeHandler}/>
+                         </Form.Group>
                         
-                    <div className="phr_bottom">
-                        <a style={{margin:"auto"}}className="my_btn" variant="success" onClick={onClickSendHandler}>Send</a>
+                        <a style={{margin:"auto"}} className="my_btn" variant="success" onClick={onClickSendHandler}>Send</a>
                     </div>
+                </div>
             </Form>
         </div>
     )
 }
 
 export default WearableSend;
+
