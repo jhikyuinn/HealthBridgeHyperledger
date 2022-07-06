@@ -43,8 +43,9 @@ function Header() {
     <nav style={{backgroundColor:"rgb(134, 193, 217)"}} className="navbar">
          <div className="navbar-header">
             <a className="navbar-brand" href="/">HEALTH BRIDGE </a>
-            {id=="jhikyuinn"?(<a className="User"  href="#!" onClick={openUserModal}>ID:</a>):<></>}
+            {id=="jhikyuinn"?(<a className="User"  href="#!" onClick={openUserModal}>ID:EHR1206</a>):<></>}
             {id=="James"?(<a className="User"  href="#!" onClick={openUserModal}>ID: James</a>):<></>}
+            {id=="INLab"?(<a className="User"  href="#!" onClick={openUserModal}>ID: INLab</a>):<></>}
             {id!=null?(<FontAwesomeIcon onClick={openNotificationModal} className="bellicon" icon={faBell}/>):<></>}
 
             

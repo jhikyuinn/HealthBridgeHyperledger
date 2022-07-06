@@ -23,7 +23,7 @@ function Data() {
       <br></br>
       <table>
         <thead>
-        <tr style={{ width: '700px' }}>
+        <tr style={{ width: 'auto' }}>
           <td><a href="#!" style={{marginLeft:"30px"}} onClick={() => setSigninModalOn(true)} className="my_btn">PHR owner</a></td>
           <td><a href="#!" onClick={() => setSigninModalOn(true)} className="my_btn">PHR researcher</a></td>
           <td><a href="#!" onClick={() => setSigninModalOn(true)} className="my_btn">PHR recorder</a></td>

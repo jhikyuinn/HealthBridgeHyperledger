@@ -26,27 +26,29 @@ const UserModal = (props) => {
   },[])
 
   return (
+    <div className={open ? 'openbackground' : 'background' }>
     
     <div style={{textalign:"center"}}className={open ? 'openModal modal' : 'modal'}>
       {open ? (
         <section style={{margin:"auto"}}>
         <br></br>
-        <a style={{fontSize:"20px"}}>Name: {users[0].patientName} </a>
         <br></br>
-        <a style={{fontSize:"20px"}}>Phone number:{users[0].phonenumber} </a>
+        <a style={{fontSize:"20px",marginLeft:"140px"}}>Name: {users[0].patientName} </a>
         <br></br>
+        <a style={{fontSize:"20px",marginLeft:"70px"}}>Phone number: {users[0].phonenumber} </a>
         <br></br>
-
-        <a className='coininfo'>
-        <FontAwesomeIcon className="dollaricon" icon={faSackDollar} /> :{users[0].checkingBalance} HBT
+        <a style={{fontSize:"22px",marginLeft:"30px"}}>
+         AccountBalance: {users[0].checkingBalance} HBT
         </a>
         <br></br>
+        <br></br>
         
-        <a className='my_btn'>charge</a>
+        <a style={{marginLeft:"50px"}} className='my_btn'>charge</a>
 
         <a className='my_btn'>exchange</a>
         </section>
       ) : null}
+    </div>
     </div>
   );
 };

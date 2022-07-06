@@ -18,6 +18,7 @@ const NotificationModal = (props) => {
   }
 
   return (
+    <div className={open ? 'openbackground' : 'background' }>
     <div className={open ? 'openModal modal' : 'modal'}>
       {open ? (
         <section>
@@ -26,7 +27,9 @@ const NotificationModal = (props) => {
         </section>
       ) : null}
     </div>
+    </div>
   );
 };
 
-export default NotificationModal;
+export default NotificationModal; 
+

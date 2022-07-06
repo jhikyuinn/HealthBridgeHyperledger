@@ -99,10 +99,20 @@ const handleOnChange = (position) => {
 
   setTotal(totalPrice);
   };
+
+  async function Exchangeresponse(){
+    await axios.put(`http://203.247.240.226:22650/api/responsePHR`,{
+      "EHRNumber":"EHR1206",
+      "doctor":"James",
+      "token":1.64,
+      "responsedata":"whole PHR"
+    }).then((res) => {
+      window.alert("Success");
+  })
+}
   
   const location = useLocation();
   const {exchangerecordview} =location.state;
-  console.log({exchangerecordview})
   
 return (
   <>
@@ -111,6 +121,7 @@ return (
         <div className="UserRequestData">
           <br></br>
           <h3>Required Data by Doctor James </h3>
+          <br></br>
           <br></br>
           <ul className="toppings-list">
             {toppings.map(({ name, price }, index) => {
@@ -136,34 +147,35 @@ return (
             <br></br>
             <li><div className="right-section">Total HBT(HealthBridge Token): {getFormattedPrice(total)}</div></li>
             <br></br>
-            <a className='my_btn'>response</a>
+            <a className='my_btn' onClick={() => Exchangeresponse()} >response</a>
           </ul>
         </div>
 
         <div className="UserResendData" >
           <br></br>
           <h3>Data Details</h3>
-          <Form style={{width:"80%",margin:"auto"}}>
+          <br></br>
+          <Form style={{width:"90%",height:"20vh",margin:"auto"}}>
                 <div className="phr_top">
                     <div className="phr_top_left">
                         <div className="col_1">
                             <Form.Group className="mb-3" controlId="pid">
                                 <Form.Label>PID</Form.Label>
-                                <Form.Control readOnly="readonly" type="text"  name="pid" value={exchangerecordview.id}/>
+                                <Form.Control style={{backgroundColor:"white"}} readOnly="readonly" type="text"  name="pid" value={exchangerecordview.id}/>
                             </Form.Group>
                         </div>
                         <div className="col_2">
                             <Form.Group className="mb-3" controlId="name">
                                 <Form.Label>Name</Form.Label>
-                                <Form.Control readOnly="readonly" type="text" name="name" value={exchangerecordview.name[0].text}/>
+                                <Form.Control style={{backgroundColor:"white"}} readOnly="readonly" type="text" name="name" value={exchangerecordview.name[0].text}/>
                             </Form.Group>
                             <Form.Group className="mb-3" controlId="age">
                                 <Form.Label>Age</Form.Label>
-                                <Form.Control readOnly="readonly" type="text"  name="age" value={exchangerecordview.extension[4].valueString}/>
+                                <Form.Control style={{backgroundColor:"white"}} readOnly="readonly" type="text"  name="age" value={exchangerecordview.extension[4].valueString}/>
                             </Form.Group>
                             <Form.Group className="mb-3" controlId="gender">
                                 <Form.Label>Gender</Form.Label>
-                                <Form.Control readOnly="readonly" type="text"  name="gender" value={exchangerecordview.gender}/>
+                                <Form.Control style={{backgroundColor:"white"}} readOnly="readonly" type="text"  name="gender" value={exchangerecordview.gender}/>
                             </Form.Group>           
                         </div>
                     </div>
@@ -171,13 +183,13 @@ return (
                     <div className="col_3">
                             <Form.Group className="mb-3" controlId="phone">
                                 <Form.Label>Mobile phone</Form.Label>
-                                <Form.Control readOnly="readonly" type="text" name="myPhone" value={exchangerecordview.telecom[0].value}/>
+                                <Form.Control style={{backgroundColor:"white"}} readOnly="readonly" type="text" name="myPhone" value={exchangerecordview.telecom[0].value}/>
                             </Form.Group>
                         </div>
                         <div className="col_4">
                             <Form.Group className="mb-3" controlId="address">
                                 <Form.Label>Address</Form.Label>
-                                <Form.Control readOnly="readonly" type="text" name="address" value={exchangerecordview.address[0].text}/>
+                                <Form.Control style={{backgroundColor:"white"}} readOnly="readonly" type="text" name="address" value={exchangerecordview.address[0].text}/>
                             </Form.Group>
                         </div>
                     </div>
@@ -186,23 +198,23 @@ return (
                     <div className="col_1">
                         <Form.Group className="mb-3" controlId="symptom">
                             <Form.Label>Symptom</Form.Label>
-                            <Form.Control readOnly="readonly" type="text" placeholder="Enter contact address" name="symptom" value={exchangerecordview.extension[0].valueString} />
+                            <Form.Control style={{backgroundColor:"white"}} readOnly="readonly" type="text" placeholder="Enter contact address" name="symptom" value={exchangerecordview.extension[0].valueString} />
                         </Form.Group>
                     </div>
                     <div className="col_2">
                         <Form.Group className="mb-3" controlId="comment">
                             <Form.Label>Adding comment</Form.Label>
-                            <Form.Control readOnly="readonly" as="textarea" rows={2} name="comment" value={exchangerecordview.extension[1].valueString}/>
+                            <Form.Control style={{backgroundColor:"white"}} readOnly="readonly" as="textarea" rows={2} name="comment" value={exchangerecordview.extension[1].valueString}/>
                         </Form.Group>
                     </div>
                     <div className="col_3">
                         <Form.Group className="mb-3" controlId="assginer">
                             <Form.Label>Assigner</Form.Label>
-                            <Form.Control  readOnly="readonly" type="text" placeholder="Enter assigner" name="assigner" value={exchangerecordview.extension[3].valueString} />
+                            <Form.Control  style={{backgroundColor:"white"}} readOnly="readonly" type="text" placeholder="Enter assigner" name="assigner" value={exchangerecordview.extension[3].valueString} />
                          </Form.Group>
                         <Form.Group className="mb-3" controlId="doctor">
                             <Form.Label>Doctor name</Form.Label>
-                            <Form.Control readOnly="readonly" type="text" placeholder="Enter doctor name" name="doctorName" value={exchangerecordview.extension[2].valueString}/>
+                            <Form.Control style={{backgroundColor:"white"}} readOnly="readonly" type="text" placeholder="Enter doctor name" name="doctorName" value={exchangerecordview.extension[2].valueString}/>
                         </Form.Group>
                     </div>
                 </div>
