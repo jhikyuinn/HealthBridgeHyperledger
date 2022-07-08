@@ -12,7 +12,7 @@ const menu = [
 }
   return(
     <div className='side_menu'>
-      <nav className="main-menu">
+      <nav style={{backgroundColor:"pink"}} className="main-menu">
       
         <ul>
           {menu.map((item, index) => {

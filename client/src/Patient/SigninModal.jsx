@@ -9,7 +9,7 @@ const SigninModal = ({ show, onHide }) => {
   const [signupModalOn, setSignupModalOn] = useState(false);
   const navigate = useNavigate();
   const [userlogin, setUserlogin] = useState({
-    email: "",
+    AccoutID: "",
     password: "",
 
 });
@@ -21,20 +21,20 @@ const onChangeHandler = (e) => {
     })
 }
 const onClickBtn = async() => {
-    if(userlogin.email ==="jhikyuinn") {
-      navigate(`/patient/${userlogin.email}`, {id: "jhikyuinn"});
+    if(userlogin.AccoutID ==="EHR1206") {
+      navigate(`/patient/${userlogin.AccoutID}`, {id: userlogin.AccoutID});
     }
-    else if(userlogin.email === "James") {
-      navigate(`/doctor/${userlogin.email}`, {id: "James"})
+    else if(userlogin.AccoutID === "James") {
+      navigate(`/doctor/${userlogin.AccoutID}`, {id: userlogin.AccoutID})
     }
-    else if(userlogin.email === "INLab") {
-      navigate(`/hospital/${userlogin.email}`, {id: "INLab"});
+    else if(userlogin.AccoutID === "INLab") {
+      navigate(`/hospital/${userlogin.AccoutID}`, {id: userlogin.AccoutID});
   }
-  else if(userlogin.email === "applewatch") {
-    navigate(`/wearable/${userlogin.email}`, {id: "applewatch"});
+  else if(userlogin.AccoutID === "applewatch") {
+    navigate(`/wearable/${userlogin.AccoutID}`, {id: userlogin.AccoutID});
 }
-    else if(userlogin.email !== undefined) {
-      navigate(`/patient/${userlogin.email}`, {id: userlogin.email});
+    else if(userlogin.AccoutID !== undefined) {
+      navigate(`/patient/${userlogin.AccoutID}`, {id: userlogin.AccoutID});
   }
 }
   return (
@@ -56,8 +56,8 @@ const onClickBtn = async() => {
         <Modal.Body>
           <Form>
             <Form.Group>
-              <Form.Label>Email address</Form.Label>
-              <Form.Control type="email" placeholder="Enter email" name="email" value={userlogin.email} onChange={onChangeHandler} />
+              <Form.Label>AccoutID</Form.Label>
+              <Form.Control type="text" placeholder="Enter AccoutID" name="AccoutID" value={userlogin.AccoutID} onChange={onChangeHandler} />
             </Form.Group>
 
             <Form.Group>

@@ -2,7 +2,6 @@ import { Form, Button } from 'react-bootstrap'
 import { useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 
-import banner from '../../image/banner.jpg';
 import Header from './UserHeader.js';
 function User() {
     const navigate = useNavigate();
@@ -28,7 +27,7 @@ function User() {
     }
     return (
         <div className='user'>
-            <Header />
+            <Header/>
             <div className='login_container'>
                 <div className='item_login'>
                     <Form className='login_form'>
@@ -53,11 +52,10 @@ function User() {
                         </Button>
                     </Form>
                 </div>
-                <div className='item_img'>
-                    <img src={banner} alt="banner" />
-                </div>
+                
             </div>
         </div>
+
     )
 }
 

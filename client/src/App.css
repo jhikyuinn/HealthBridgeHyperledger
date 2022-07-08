@@ -20,7 +20,7 @@ body{
   background-image: url('assets/home.jpeg');
   background-position:right 7vh;
   background-repeat: no-repeat;
-  background-size: 70vw 90vh;
+  background-size: 65vw 90vh;
   width: 100vw;
   height: 100vh;
 }
@@ -66,22 +66,22 @@ nav {
   color: rgb(93, 142, 161);
   font-family: 'gotham_thin', sans-serif;
   padding: 0.2em;
-  margin-left: 3%;
+  margin-left: 2vw;
 }
 
 .data_cont {
   font-size: 20px;
   color: rgb(93, 142, 161);
-  margin-top: 8%;
-  margin-left: 1%;
+  margin-top: 15vh;
+  margin-left: 1vw;
 }
 
 .content {
   padding: 2em;
-  padding-top: 3em;
+  padding-top: 5vh;
   letter-spacing: 0.7px;
-  margin-top: 5%;
-  margin-left: 1%;
+  margin-top: 10vh;
+  margin-left: 2vw;
 }
 
 .my_btn {

@@ -1,19 +1,17 @@
 import React,{ useState, useEffect} from 'react';
+import axios from 'axios'
+
 
 import "../css/HeaderModal.css"
 
 const UserModal = (props) => {
-  console.log(props);
 
   const { open } = props;
   const { users } = props;
-  console.log(users);
-
 
   return (
     <div className={open ? 'openbackground' : 'background' }>
     <div style={{textalign:"center"}}className={open ? 'openModal modal' : 'modal'}>
-
       {open ? (
         <section style={{margin:"auto"}}>
         <br></br>

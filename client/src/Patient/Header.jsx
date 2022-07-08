@@ -42,8 +42,8 @@ function Header() {
   return (
     <>
     <UserModal open={UsermodalOpen} users={users} close={closeUserModal} header="Modal heading"></UserModal>
-    {id=="jhikyuinn" || id == "EHR1206" ? <NotificationModal open={NotificationmodalOpen} id={id} close={closeNotificationModal} header="Modal heading"></NotificationModal> : <></>}
-    {id == "James" ? <DoctorNotification open={NotificationmodalOpen} close={closeNotificationModal} header="Modal heading" /> : <></>}    
+    {id=="EHR1206" ? <NotificationModal open={NotificationmodalOpen} id={id} close={closeNotificationModal} header="Modal heading"></NotificationModal> : <></>}
+    {id == "James" ? <DoctorNotification open={NotificationmodalOpen} id={id} close={closeNotificationModal} header="Modal heading" /> : <></>}    
 
     <nav  className="navbar">
         <div className="navbar-header">

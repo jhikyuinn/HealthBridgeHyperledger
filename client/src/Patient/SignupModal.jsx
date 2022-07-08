@@ -22,7 +22,8 @@ const toastId  = useRef();
   const SignupBlock = async () => {
     await axios.post(`${BASE_URL}/createAcc`, {
       "AccountID": usercreate.AccountID,
-      "PersonName": usercreate.PersonName,
+      "PersonName": usercreate.AccountID,
+      "PatientName": usercreate.PersonName,
       "CryptoBalance": 10000000,
       "phonenumber":usercreate.phonenumber
     }).then(console.log);
@@ -38,7 +39,7 @@ const onClickBtn = async() => {
   toastId.current = toast("Wait.. Sending PHR", {autoClose: false});
   await SignupBlock().then(()=>{
     toast.update(toastId.current,{render: 'Success signup', type: toast.TYPE.SUCCESS, position: toast.POSITION.TOP_RIGHT, autoClose: 5000});
-    navigate("/");
+    navigate("/")
   });
 }
 
@@ -60,7 +61,7 @@ const onClickBtn = async() => {
             
             <Form.Group>
               <Form.Label>AccoutID</Form.Label>
-              <Form.Control name="AccountID" type="text" placeholder="Enter AccountIC" value={usercreate.AccountID} onChange={onChangeHandler}/>
+              <Form.Control name="AccountID" type="text" placeholder="Enter AccountID" value={usercreate.AccountID} onChange={onChangeHandler}/>
               </Form.Group>
 
             <Form.Group>
@@ -84,7 +85,7 @@ const onClickBtn = async() => {
             </Form.Group>
             <br></br>
             <a onClick={onClickBtn} className="my_btn">
-              Success
+              Create Account
             </a>
           
             
